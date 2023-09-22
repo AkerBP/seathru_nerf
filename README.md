@@ -1,7 +1,7 @@
 # Seathru-NeRF for nerfstudio
 <p align="center">
-<img src="https://github.com/ese-msc-2022/irp-pms122/actions/workflows/linting.yml/badge.svg" alt="linting"/>
-<img src="https://github.com/ese-msc-2022/irp-pms122/actions/workflows/tests.yml/badge.svg" alt="tests"/>
+<img src="https://github.com/psetinek/seathru_nerf/actions/workflows/linting.yml/badge.svg" alt="linting"/>
+<img src="https://github.com/psetinek/seathru_nerf/actions/workflows/tests.yml/badge.svg" alt="tests"/>
 <img src="https://img.shields.io/badge/license-MIT-blue.svg" alt="license"/>
 </p>
 

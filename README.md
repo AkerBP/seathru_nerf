@@ -5,7 +5,7 @@
 <img src="https://img.shields.io/badge/license-MIT-blue.svg" alt="license"/>
 </p>
 
-This repository provides Neural Radiance Field (NeRF) approach specifically tailored to underwater scenes. Why do we need another NeRF model? Simply because particles travel differently through water than they do through air. Below you can see results of a conventional NeRF approach (nerfacto) compared to this implementation on a subsea scene:
+This repository provides Neural Radiance Field (NeRF) approach specifically tailored to underwater scenes. Below you can see results of a conventional NeRF approach (nerfacto) compared to this implementation on a subsea scene:
 
 <p align="center">
 <img src="./imgs/comp.gif"/>

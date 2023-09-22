@@ -1,0 +1,543 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>API &mdash; Subsea-NeRF  documentation</title>
+      <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="_static/jquery.js?v=5d32c60e"></script>
+        <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js?v=b3ba4146"></script>
+        <script src="_static/doctools.js?v=888ff710"></script>
+        <script src="_static/sphinx_highlight.js?v=4825356b"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="prev" title="Results" href="results.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="index.html" class="icon icon-home">
+            Subsea-NeRF
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="intro.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="installation.html">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="usage.html">Usage</a></li>
+<li class="toctree-l1"><a class="reference internal" href="results.html">Results</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">API</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#seathru.SeathruDepthRenderer"><code class="docutils literal notranslate"><span class="pre">SeathruDepthRenderer</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#seathru.SeathruDepthRenderer.forward"><code class="docutils literal notranslate"><span class="pre">SeathruDepthRenderer.forward()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#seathru.SeathruField"><code class="docutils literal notranslate"><span class="pre">SeathruField</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#seathru.SeathruField.get_density"><code class="docutils literal notranslate"><span class="pre">SeathruField.get_density()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#seathru.SeathruField.get_outputs"><code class="docutils literal notranslate"><span class="pre">SeathruField.get_outputs()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#seathru.SeathruHeadNames"><code class="docutils literal notranslate"><span class="pre">SeathruHeadNames</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="#seathru.SeathruModel"><code class="docutils literal notranslate"><span class="pre">SeathruModel</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#seathru.SeathruModel.get_image_metrics_and_images"><code class="docutils literal notranslate"><span class="pre">SeathruModel.get_image_metrics_and_images()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#seathru.SeathruModel.get_loss_dict"><code class="docutils literal notranslate"><span class="pre">SeathruModel.get_loss_dict()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#seathru.SeathruModel.get_metrics_dict"><code class="docutils literal notranslate"><span class="pre">SeathruModel.get_metrics_dict()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#seathru.SeathruModel.get_outputs"><code class="docutils literal notranslate"><span class="pre">SeathruModel.get_outputs()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#seathru.SeathruModel.get_param_groups"><code class="docutils literal notranslate"><span class="pre">SeathruModel.get_param_groups()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#seathru.SeathruModel.get_training_callbacks"><code class="docutils literal notranslate"><span class="pre">SeathruModel.get_training_callbacks()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#seathru.SeathruModel.populate_modules"><code class="docutils literal notranslate"><span class="pre">SeathruModel.populate_modules()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#seathru.SeathruModel.step_cb"><code class="docutils literal notranslate"><span class="pre">SeathruModel.step_cb()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#seathru.SeathruRGBRenderer"><code class="docutils literal notranslate"><span class="pre">SeathruRGBRenderer</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#seathru.SeathruRGBRenderer.combine_rgb"><code class="docutils literal notranslate"><span class="pre">SeathruRGBRenderer.combine_rgb()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#seathru.SeathruRGBRenderer.forward"><code class="docutils literal notranslate"><span class="pre">SeathruRGBRenderer.forward()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#seathru.acc_loss"><code class="docutils literal notranslate"><span class="pre">acc_loss()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="#seathru.add_water"><code class="docutils literal notranslate"><span class="pre">add_water()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="#seathru.get_bayer_mask"><code class="docutils literal notranslate"><span class="pre">get_bayer_mask()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="#seathru.get_transmittance"><code class="docutils literal notranslate"><span class="pre">get_transmittance()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="#seathru.recon_loss"><code class="docutils literal notranslate"><span class="pre">recon_loss()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="#seathru.save_debug_info"><code class="docutils literal notranslate"><span class="pre">save_debug_info()</span></code></a></li>
+</ul>
+</li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">Subsea-NeRF</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">API</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/api.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="api">
+<span id="api-label"></span><h1>API<a class="headerlink" href="#api" title="Permalink to this heading"></a></h1>
+<p>This section provides in depth documentation of all the implemented functionality.</p>
+<span class="target" id="module-seathru"></span><dl class="py class">
+<dt class="sig sig-object py" id="seathru.SeathruDepthRenderer">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">seathru.</span></span><span class="sig-name descname"><span class="pre">SeathruDepthRenderer</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">far_plane</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">method</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Literal</span><span class="p"><span class="pre">[</span></span><span class="s"><span class="pre">'median'</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="s"><span class="pre">'expected'</span></span><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">'median'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#seathru.SeathruDepthRenderer" title="Permalink to this definition"></a></dt>
+<dd><p>Calculate depth along rays.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>far_plane</strong> – Far plane of rays.</p></li>
+<li><p><strong>method</strong> – Depth calculation method.</p></li>
+</ul>
+</dd>
+</dl>
+<p>Initializes internal Module state, shared by both nn.Module and ScriptModule.</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="seathru.SeathruDepthRenderer.forward">
+<span class="sig-name descname"><span class="pre">forward</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">weights</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Float</span><span class="p"><span class="pre">[</span></span><span class="pre">Tensor</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="s"><span class="pre">'*batch</span> <span class="pre">num_samples</span> <span class="pre">1'</span></span><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ray_samples</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">RaySamples</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Float</span><span class="p"><span class="pre">[</span></span><span class="pre">Tensor</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="s"><span class="pre">'*batch</span> <span class="pre">1'</span></span><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#seathru.SeathruDepthRenderer.forward" title="Permalink to this definition"></a></dt>
+<dd><p>Calculate depth along rays.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>weights</strong> – Weights for each sample.</p></li>
+<li><p><strong>ray_samples</strong> – Set of ray samples.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Depht values.</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="seathru.SeathruField">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">seathru.</span></span><span class="sig-name descname"><span class="pre">SeathruField</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">aabb</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Tensor</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">num_levels</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">16</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">min_res</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">16</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">max_res</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">8192</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">log2_hashmap_size</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">21</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">features_per_level</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">2</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">num_layers</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">2</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">hidden_dim</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">256</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">bottleneck_dim</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">63</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">num_layers_colour</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">3</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">hidden_dim_colour</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">256</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">num_layers_medium</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">2</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">hidden_dim_medium</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">128</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">spatial_distortion</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">SpatialDistortion</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">implementation</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Literal</span><span class="p"><span class="pre">[</span></span><span class="s"><span class="pre">'tcnn'</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="s"><span class="pre">'torch'</span></span><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">'tcnn'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">use_viewing_dir_obj_rgb</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">object_density_bias</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">0.0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">medium_density_bias</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">0.0</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#seathru.SeathruField" title="Permalink to this definition"></a></dt>
+<dd><p>Field for Seathru-NeRF. Default configuration is the big model.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>aabb</strong> – parameters of scene aabb bounds</p></li>
+<li><p><strong>num_levels</strong> – number of levels of the hashmap for the object base MLP</p></li>
+<li><p><strong>min_res</strong> – minimum resolution of the hashmap for the object base MLP</p></li>
+<li><p><strong>max_res</strong> – maximum resolution of the hashmap for the object base MLP</p></li>
+<li><p><strong>log2_hashmap_size</strong> – size of the hashmap for the object base MLP</p></li>
+<li><p><strong>features_per_level</strong> – number of features per level of the hashmap for the object
+base MLP</p></li>
+<li><p><strong>num_layers</strong> – number of hidden layers for the object base MLP</p></li>
+<li><p><strong>hidden_dim</strong> – dimension of hidden layers for the object base MLP</p></li>
+<li><p><strong>bottleneck_dim</strong> – bottleneck dimension between object base MLP and object head MLP</p></li>
+<li><p><strong>num_layers_colour</strong> – number of hidden layers for colour MLP</p></li>
+<li><p><strong>hidden_dim_colour</strong> – dimension of hidden layers for colour MLP</p></li>
+<li><p><strong>num_layers_medium</strong> – number of hidden layers for medium MLP</p></li>
+<li><p><strong>hidden_dim_medium</strong> – dimension of hidden layers for medium MLP</p></li>
+<li><p><strong>spatial_distortion</strong> – spatial distortion to apply to the scene</p></li>
+<li><p><strong>implementation</strong> – implementation of the base mlp (tcnn or torch)</p></li>
+<li><p><strong>use_viewing_dir_obj_rgb</strong> – whether to use viewing direction in object rgb MLP</p></li>
+<li><p><strong>object_density_bias</strong> – bias for object density</p></li>
+<li><p><strong>medium_density_bias</strong> – bias for medium density</p></li>
+</ul>
+</dd>
+</dl>
+<p>Initializes internal Module state, shared by both nn.Module and ScriptModule.</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="seathru.SeathruField.get_density">
+<span class="sig-name descname"><span class="pre">get_density</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">ray_samples</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">RaySamples</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Tuple</span><span class="p"><span class="pre">[</span></span><span class="pre">Tensor</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">Tensor</span><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#seathru.SeathruField.get_density" title="Permalink to this definition"></a></dt>
+<dd><dl class="simple">
+<dt>Compute output of object base MLP. (This function builds on the nerfacto</dt><dd><p>implementation)</p>
+</dd>
+</dl>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>ray_samples</strong> – RaySamples object containing the ray samples.</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Tuple containing the object density and the bottleneck vector.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="seathru.SeathruField.get_outputs">
+<span class="sig-name descname"><span class="pre">get_outputs</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">ray_samples</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">RaySamples</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">density_embedding</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Tensor</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Dict</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="#seathru.SeathruHeadNames" title="seathru.seathru_fieldheadnames.SeathruHeadNames"><span class="pre">SeathruHeadNames</span></a><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">Tensor</span><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#seathru.SeathruField.get_outputs" title="Permalink to this definition"></a></dt>
+<dd><p>Compute outputs of object and medium networks (except object density).</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>ray_samples</strong> – RaySamples object containing the ray samples.</p></li>
+<li><p><strong>density_embedding</strong> – Bottleneck vector (output of object base MLP).</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Dictionary containing the outputs seathru network.</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="seathru.SeathruHeadNames">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">seathru.</span></span><span class="sig-name descname"><span class="pre">SeathruHeadNames</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#seathru.SeathruHeadNames" title="Permalink to this definition"></a></dt>
+<dd><p>Additional field outputs for SeaThru-NeRF.</p>
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="seathru.SeathruModel">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">seathru.</span></span><span class="sig-name descname"><span class="pre">SeathruModel</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">config</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">ModelConfig</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">scene_box</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">SceneBox</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">num_train_data</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#seathru.SeathruModel" title="Permalink to this definition"></a></dt>
+<dd><p>Seathru model</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>config</strong> – SeaThru-NeRF configuration to instantiate the model with.</p>
+</dd>
+</dl>
+<p>Initializes internal Module state, shared by both nn.Module and ScriptModule.</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="seathru.SeathruModel.get_image_metrics_and_images">
+<span class="sig-name descname"><span class="pre">get_image_metrics_and_images</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">outputs</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Dict</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">Tensor</span><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">batch</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Dict</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">Tensor</span><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Tuple</span><span class="p"><span class="pre">[</span></span><span class="pre">Dict</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">float</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">Dict</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">Tensor</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#seathru.SeathruModel.get_image_metrics_and_images" title="Permalink to this definition"></a></dt>
+<dd><p>Get evaluation metrics dictionary and images to log for eval batch.
+(extended from nerfacto)</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>outputs</strong> – Dict containing the outputs of the model.</p></li>
+<li><p><strong>batch</strong> – Dict containing the gt data.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Tuple containing the metrics to log (as scalars) and the images to log.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="seathru.SeathruModel.get_loss_dict">
+<span class="sig-name descname"><span class="pre">get_loss_dict</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">outputs</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">batch</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">metrics_dict</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#seathru.SeathruModel.get_loss_dict" title="Permalink to this definition"></a></dt>
+<dd><p>Calculate loss dictionary.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>outputs</strong> – Dict containing the outputs of the model.</p></li>
+<li><p><strong>batch</strong> – Dict containing the gt data.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Dict containing the loss values.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="seathru.SeathruModel.get_metrics_dict">
+<span class="sig-name descname"><span class="pre">get_metrics_dict</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">outputs</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">batch</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#seathru.SeathruModel.get_metrics_dict" title="Permalink to this definition"></a></dt>
+<dd><p>Get evaluation metrics dictionary.
+(Compared to get_image_metrics_and_images(), this function does not render
+images and is executed at each training step.)</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>outputs</strong> – Dict containing the outputs of the model.</p></li>
+<li><p><strong>batch</strong> – Dict containing the gt data.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Dict containing the metrics to log.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="seathru.SeathruModel.get_outputs">
+<span class="sig-name descname"><span class="pre">get_outputs</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">ray_bundle</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">RayBundle</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Dict</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">Tensor</span><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#seathru.SeathruModel.get_outputs" title="Permalink to this definition"></a></dt>
+<dd><p>Get outputs from the model.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>ray_bundle</strong> – RayBundle containing the input rays to compute and render.</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Dict containing the outputs of the model.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="seathru.SeathruModel.get_param_groups">
+<span class="sig-name descname"><span class="pre">get_param_groups</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Dict</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">Parameter</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#seathru.SeathruModel.get_param_groups" title="Permalink to this definition"></a></dt>
+<dd><p>Get the parameter groups for the optimizer. (Code snippet from nerfacto)</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>The parameter groups.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="seathru.SeathruModel.get_training_callbacks">
+<span class="sig-name descname"><span class="pre">get_training_callbacks</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">training_callback_attributes</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">TrainingCallbackAttributes</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">TrainingCallback</span><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#seathru.SeathruModel.get_training_callbacks" title="Permalink to this definition"></a></dt>
+<dd><dl class="simple">
+<dt>Get the training callbacks.</dt><dd><p>(Code of this function is from nerfacto but added step tracking for debugging.)</p>
+</dd>
+</dl>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>training_callback_attributes</strong> – The training callback attributes.</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>List with training callbacks.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="seathru.SeathruModel.populate_modules">
+<span class="sig-name descname"><span class="pre">populate_modules</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#seathru.SeathruModel.populate_modules" title="Permalink to this definition"></a></dt>
+<dd><p>Setup the fields and modules.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="seathru.SeathruModel.step_cb">
+<span class="sig-name descname"><span class="pre">step_cb</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">step</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="headerlink" href="#seathru.SeathruModel.step_cb" title="Permalink to this definition"></a></dt>
+<dd><p>Function for training callbacks to use to update training step.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>step</strong> – The training step.</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="seathru.SeathruRGBRenderer">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">seathru.</span></span><span class="sig-name descname"><span class="pre">SeathruRGBRenderer</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">use_new_rendering_eqs</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#seathru.SeathruRGBRenderer" title="Permalink to this definition"></a></dt>
+<dd><p>Volumetric RGB rendering of an unnderwater scene.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>use_new_rendering_eqs</strong> – Whether to use the new rendering equations.</p>
+</dd>
+</dl>
+<p>Initializes internal Module state, shared by both nn.Module and ScriptModule.</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="seathru.SeathruRGBRenderer.combine_rgb">
+<span class="sig-name descname"><span class="pre">combine_rgb</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">object_rgb</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Float</span><span class="p"><span class="pre">[</span></span><span class="pre">Tensor</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="s"><span class="pre">'*bs</span> <span class="pre">num_samples</span> <span class="pre">3'</span></span><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">medium_rgb</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Float</span><span class="p"><span class="pre">[</span></span><span class="pre">Tensor</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="s"><span class="pre">'*bs</span> <span class="pre">num_samples</span> <span class="pre">3'</span></span><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">medium_bs</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Float</span><span class="p"><span class="pre">[</span></span><span class="pre">Tensor</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="s"><span class="pre">'*bs</span> <span class="pre">num_samples</span> <span class="pre">3'</span></span><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">medium_attn</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Float</span><span class="p"><span class="pre">[</span></span><span class="pre">Tensor</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="s"><span class="pre">'*bs</span> <span class="pre">num_samples</span> <span class="pre">3'</span></span><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">densities</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Float</span><span class="p"><span class="pre">[</span></span><span class="pre">Tensor</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="s"><span class="pre">'*bs</span> <span class="pre">num_samples</span> <span class="pre">1'</span></span><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">weights</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Float</span><span class="p"><span class="pre">[</span></span><span class="pre">Tensor</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="s"><span class="pre">'*bs</span> <span class="pre">num_samples</span> <span class="pre">1'</span></span><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ray_samples</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">RaySamples</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Tensor</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">Tuple</span><span class="p"><span class="pre">[</span></span><span class="pre">Tensor</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">Tensor</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">Tensor</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">Tensor</span><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#seathru.SeathruRGBRenderer.combine_rgb" title="Permalink to this definition"></a></dt>
+<dd><p>Render pixel colour along rays using volumetric rendering.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>object_rgb</strong> – RGB values of object.</p></li>
+<li><p><strong>medium_rgb</strong> – RGB values of medium.</p></li>
+<li><p><strong>medium_bs</strong> – sigma backscatter of medium.</p></li>
+<li><p><strong>medium_attn</strong> – sigma attenuation of medium.</p></li>
+<li><p><strong>densities</strong> – Object densities.</p></li>
+<li><p><strong>weights</strong> – Object weights.</p></li>
+<li><p><strong>ray_samples</strong> – Set of ray samples.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Rendered pixel colour (and direct, bs, and J if using new rendering
+equations and not training).</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="seathru.SeathruRGBRenderer.forward">
+<span class="sig-name descname"><span class="pre">forward</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">object_rgb</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Float</span><span class="p"><span class="pre">[</span></span><span class="pre">Tensor</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="s"><span class="pre">'*bs</span> <span class="pre">num_samples</span> <span class="pre">3'</span></span><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">medium_rgb</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Float</span><span class="p"><span class="pre">[</span></span><span class="pre">Tensor</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="s"><span class="pre">'*bs</span> <span class="pre">num_samples</span> <span class="pre">3'</span></span><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">medium_bs</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Float</span><span class="p"><span class="pre">[</span></span><span class="pre">Tensor</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="s"><span class="pre">'*bs</span> <span class="pre">num_samples</span> <span class="pre">3'</span></span><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">medium_attn</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Float</span><span class="p"><span class="pre">[</span></span><span class="pre">Tensor</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="s"><span class="pre">'*bs</span> <span class="pre">num_samples</span> <span class="pre">3'</span></span><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">densities</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Float</span><span class="p"><span class="pre">[</span></span><span class="pre">Tensor</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="s"><span class="pre">'*bs</span> <span class="pre">num_samples</span> <span class="pre">1'</span></span><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">weights</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Float</span><span class="p"><span class="pre">[</span></span><span class="pre">Tensor</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="s"><span class="pre">'*bs</span> <span class="pre">num_samples</span> <span class="pre">1'</span></span><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ray_samples</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">RaySamples</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Tensor</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">Tuple</span><span class="p"><span class="pre">[</span></span><span class="pre">Tensor</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">Tensor</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">Tensor</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">Tensor</span><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#seathru.SeathruRGBRenderer.forward" title="Permalink to this definition"></a></dt>
+<dd><p>Render pixel colour along rays using volumetric rendering.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>object_rgb</strong> – RGB values of object.</p></li>
+<li><p><strong>medium_rgb</strong> – RGB values of medium.</p></li>
+<li><p><strong>medium_bs</strong> – sigma backscatter of medium.</p></li>
+<li><p><strong>medium_attn</strong> – sigma attenuation of medium.</p></li>
+<li><p><strong>densities</strong> – Object densities.</p></li>
+<li><p><strong>weights</strong> – Object weights.</p></li>
+<li><p><strong>ray_samples</strong> – Set of ray samples.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Rendered pixel colour (and direct, bs, and J if using new rendering
+equations and not training).</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="seathru.acc_loss">
+<span class="sig-prename descclassname"><span class="pre">seathru.</span></span><span class="sig-name descname"><span class="pre">acc_loss</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">transmittance_object</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Float</span><span class="p"><span class="pre">[</span></span><span class="pre">Tensor</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="s"><span class="pre">'*bs</span> <span class="pre">num_samples</span> <span class="pre">1'</span></span><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">beta</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Tensor</span></span></span><a class="headerlink" href="#seathru.acc_loss" title="Permalink to this definition"></a></dt>
+<dd><p>Compute the acc_loss.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>transmittance_object</strong> – Transmittances of object.</p></li>
+<li><p><strong>factor</strong> – factor to control the weight of the two distributions</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Acc Loss.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="seathru.add_water">
+<span class="sig-prename descclassname"><span class="pre">seathru.</span></span><span class="sig-name descname"><span class="pre">add_water</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">img</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Tensor</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">depth</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Tensor</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">beta_D</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Tensor</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">beta_B</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Tensor</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">B_inf</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Tensor</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Tensor</span></span></span><a class="headerlink" href="#seathru.add_water" title="Permalink to this definition"></a></dt>
+<dd><dl class="simple">
+<dt>Add water effect to image.</dt><dd><p>Image formation model from <a class="reference external" href="https://openaccess.thecvf.com/content_cvpr_2018/papers/Akkaynak_A_Revised_Underwater_CVPR_2018_paper.pdf">https://openaccess.thecvf.com/content_cvpr_2018/papers/Akkaynak_A_Revised_Underwater_CVPR_2018_paper.pdf</a> (Eq. 20).</p>
+</dd>
+</dl>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>img</strong> – image to add water effect to.</p></li>
+<li><p><strong>beta_D</strong> – depth map.</p></li>
+<li><p><strong>beta_B</strong> – background map.</p></li>
+<li><p><strong>B_inf</strong> – background image.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Image with water effect.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="seathru.get_bayer_mask">
+<span class="sig-prename descclassname"><span class="pre">seathru.</span></span><span class="sig-name descname"><span class="pre">get_bayer_mask</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">indices</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Tensor</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Tensor</span></span></span><a class="headerlink" href="#seathru.get_bayer_mask" title="Permalink to this definition"></a></dt>
+<dd><p>Get bayer mask for rgb loss.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>indices</strong> – tensor of shape ([num_rays, 2]) containing the row and column of the</p></li>
+<li><p><strong>ray.</strong> (<em>pixel corresponding to the</em>) – </p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Tensor of shape ([num_rays, 3]) containing the bayer mask.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="seathru.get_transmittance">
+<span class="sig-prename descclassname"><span class="pre">seathru.</span></span><span class="sig-name descname"><span class="pre">get_transmittance</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">deltas</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Tensor</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">densities</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Float</span><span class="p"><span class="pre">[</span></span><span class="pre">Tensor</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="s"><span class="pre">'*bs</span> <span class="pre">num_samples</span> <span class="pre">1'</span></span><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Float</span><span class="p"><span class="pre">[</span></span><span class="pre">Tensor</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="s"><span class="pre">'*bs</span> <span class="pre">num_samples</span> <span class="pre">1'</span></span><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#seathru.get_transmittance" title="Permalink to this definition"></a></dt>
+<dd><p>Compute transmittance for each ray sample.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>deltas</strong> – Distance between each ray sample.</p></li>
+<li><p><strong>densities</strong> – Densities of each ray sample.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Transmittance for each ray sample.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="seathru.recon_loss">
+<span class="sig-prename descclassname"><span class="pre">seathru.</span></span><span class="sig-name descname"><span class="pre">recon_loss</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">gt</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Tensor</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">pred</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Tensor</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Tensor</span></span></span><a class="headerlink" href="#seathru.recon_loss" title="Permalink to this definition"></a></dt>
+<dd><p>Compute the reconstruction loss.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>gt</strong> – Ground truth.</p></li>
+<li><p><strong>pred</strong> – RGB prediction.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Reconstruction loss.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="seathru.save_debug_info">
+<span class="sig-prename descclassname"><span class="pre">seathru.</span></span><span class="sig-name descname"><span class="pre">save_debug_info</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">weights</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Tensor</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">transmittance</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Tensor</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">depth</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Tensor</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">prop_depth</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Tensor</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">step</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="headerlink" href="#seathru.save_debug_info" title="Permalink to this definition"></a></dt>
+<dd><p>Save output tensors for debugging purposes.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>weights</strong> – weights tensor.</p></li>
+<li><p><strong>transmittance</strong> – transmittance tensor.</p></li>
+<li><p><strong>depth</strong> – depth tensor.</p></li>
+<li><p><strong>prop_depth</strong> – prop_depth tensor.</p></li>
+<li><p><strong>step</strong> – current step of training.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>None</p>
+</dd>
+</dl>
+</dd></dl>
+
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="results.html" class="btn btn-neutral float-left" title="Results" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright .</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

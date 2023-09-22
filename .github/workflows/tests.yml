@@ -1,0 +1,46 @@
+name: run-tests
+on:
+  push:
+
+jobs:
+  run-tests:
+    runs-on: ubuntu-latest
+    steps:
+
+    # checkout nerfstudio
+    - uses: actions/checkout@v3
+      with:
+        repository: 'acse-pms122/nerfstudio_dev'
+        path: nerfstudio_dev
+
+    - uses: actions/setup-python@v4
+      with:
+        python-version: '3.8'
+
+    # load cached env (otherwise nerfstudio can take quite long to install)
+    - uses: actions/cache@v3
+      with:
+        path: ${{ env.pythonLocation }}
+        key: ${{ env.pythonLocation }}-${{ hashFiles('pyproject.toml') }}
+
+    - name: Install dependencies
+      working-directory: ./nerfstudio_dev
+      run: |
+        pip install -e .
+        pip install pytest
+
+    # checkout seathru-nerf (this repo)
+    - uses: actions/checkout@v3
+      with:
+        path: irp-pms122
+
+    - name: Install seathru
+      working-directory: ./irp-pms122
+      run: |
+        pip install -e .
+
+    # Run tests
+    - name: run tests
+      working-directory: ./irp-pms122
+      run: pytest ./tests
+

@@ -60,7 +60,7 @@ hue, indicating low accumulation).
 .. raw:: html
 
     <details>
-        <summary>Click to see renderings of JapaneseGradens-RedSea [sic]</summary>
+        <summary>Click to see renderings of JapaneseGardens-RedSea</summary>
         <iframe width="560" height="315" src="https://www.youtube.com/embed/YW33VPZYGg0?si=xKS55gbN4W8rByQ0" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
     </details>
 

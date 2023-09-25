@@ -379,13 +379,14 @@ class SeathruModel(Model):
         ray_samples_list.append(ray_samples)
 
         # Render rgb (only rgb in training and rgb, direct, bs, J in eval for
-        #  performance reasons as we do not optimize with respect to direct, bs, J)
+        # performance reasons as we do not optimize with respect to direct, bs, J)
+        # ignore types to avoid unnecesarry pyright errors
         if self.training or not self.config.use_new_rendering_eqs:
             rgb = self.renderer_rgb(
                 object_rgb=field_outputs[FieldHeadNames.RGB],
-                medium_rgb=field_outputs[SeathruHeadNames.MEDIUM_RGB],
-                medium_bs=field_outputs[SeathruHeadNames.MEDIUM_BS],
-                medium_attn=field_outputs[SeathruHeadNames.MEDIUM_ATTN],
+                medium_rgb=field_outputs[SeathruHeadNames.MEDIUM_RGB],  # type: ignore
+                medium_bs=field_outputs[SeathruHeadNames.MEDIUM_BS],  # type: ignore
+                medium_attn=field_outputs[SeathruHeadNames.MEDIUM_ATTN],  # type: ignore
                 densities=field_outputs[FieldHeadNames.DENSITY],
                 weights=weights,
                 ray_samples=ray_samples,
@@ -396,9 +397,9 @@ class SeathruModel(Model):
         else:
             rgb, direct, bs, J = self.renderer_rgb(
                 object_rgb=field_outputs[FieldHeadNames.RGB],
-                medium_rgb=field_outputs[SeathruHeadNames.MEDIUM_RGB],
-                medium_bs=field_outputs[SeathruHeadNames.MEDIUM_BS],
-                medium_attn=field_outputs[SeathruHeadNames.MEDIUM_ATTN],
+                medium_rgb=field_outputs[SeathruHeadNames.MEDIUM_RGB],  # type: ignore
+                medium_bs=field_outputs[SeathruHeadNames.MEDIUM_BS],  # type: ignore
+                medium_attn=field_outputs[SeathruHeadNames.MEDIUM_ATTN],  # type: ignore
                 densities=field_outputs[FieldHeadNames.DENSITY],
                 weights=weights,
                 ray_samples=ray_samples,
@@ -409,8 +410,9 @@ class SeathruModel(Model):
         accumulation = self.renderer_accumulation(weights=weights)
 
         # Calculate transmittance and add to outputs for acc_loss calculation
+        # Ignore type error that occurs because ray_samples can be initialized without deltas
         transmittance = get_transmittance(
-            ray_samples.deltas, field_outputs[FieldHeadNames.DENSITY]
+            ray_samples.deltas, field_outputs[FieldHeadNames.DENSITY]  # type: ignore
         )
         outputs = {
             "rgb": rgb,

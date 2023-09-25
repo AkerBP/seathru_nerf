@@ -58,7 +58,8 @@ class SeathruRGBRenderer(nn.Module):
             comp_object_rgb = torch.sum(weights * attn_component * object_rgb, dim=-2)
 
             # Medium RGB
-            transmittance_object = get_transmittance(ray_samples.deltas, densities)
+            # Ignore type error that occurs because ray_samples can be initialized without deltas
+            transmittance_object = get_transmittance(ray_samples.deltas, densities)  # type: ignore
             bs_comp1 = torch.exp(-medium_bs * s)
             bs_comp2 = 1 - torch.exp(-medium_bs * ray_samples.deltas)
             comp_medium_rgb = torch.sum(
@@ -75,10 +76,12 @@ class SeathruRGBRenderer(nn.Module):
         # direct, bs, and J. (and detach deltas for medium contributions as it showed
         # to enhance stability)
         else:
-            transmittance_object = get_transmittance(ray_samples.deltas, densities)
+            # Ignore type error that occurs because ray_samples can be initialized without deltas
+            transmittance_object = get_transmittance(ray_samples.deltas, densities)  # type: ignore
 
             # Get transmittance_attn
-            deltas_detached = ray_samples.deltas.detach()
+            # Ignore type error that occurs because ray_samples can be initialized without deltas
+            deltas_detached = ray_samples.deltas.detach()  # type: ignore
             transmittance_attn = get_transmittance(
                 deltas=deltas_detached, densities=medium_attn
             )

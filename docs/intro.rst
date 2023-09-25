@@ -7,7 +7,7 @@ With Neural Radiance Fields (NeRFs), we can store a 3D scene as a continuous fun
 This idea was first introduced in the original NeRF publication :cite:`nerf`.
 Since then, the field experienced many advancements. Some of them even in the subsea domain.
 However, these advancements still have some limitations. This implementation adresses some of those limitations
-and provides a modular and documented implementation of a subsea NeRF that allows for easy modifications and experiments.
+and provides a modular and documented implementation of a subsea specific NeRF that allows for easy modifications and experiments.
 
 Approach
 ********

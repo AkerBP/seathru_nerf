@@ -11,7 +11,10 @@ Renderings
 
 This are some results that show the reconstructed scene on the left and the clean scene on the right.
 
-.. video:: ../media/IUI3-RedSea.mp4
+.. raw:: html
+
+   <iframe width="560" height="315" src="https://youtu.be/N30qCrED-lU" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+
 
 .. .. raw:: html
 

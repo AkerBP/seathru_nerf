@@ -65,7 +65,7 @@ in the following table:
      - Best
    * - ``seathru-nerf-lite``
      - Smaller model
-     - ~8 GB
+     - ~7 GB
      - Good
 
 I recommend to use the ``seathru-nerf`` method as it was used to experiment and produce the results presented in the paper.

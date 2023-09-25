@@ -15,6 +15,7 @@ extensions = [
     "sphinx_rtd_theme",
     "sphinx.ext.mathjax",
     "sphinxcontrib.bibtex",
+    "sphinxcontrib-video"
 ]
 
 bibtex_bibfiles = ["references.bib"]

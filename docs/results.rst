@@ -11,16 +11,18 @@ Renderings
 
 This are some results that show the reconstructed scene on the left and the clean scene on the right.
 
-.. raw:: html
+.. video:: ../media/IUI3-RedSea.mp4
 
-    <details>
-        <summary>Click to see renderings of IUI3-RedSea</summary>
+.. .. raw:: html
 
-        <video width="720" height="240" controls loop>
-            <source src="../media/IUI3-RedSea.mp4" type="video/mp4">
-            Your browser does not support the video tag.
-        </video>
-    </details>
+..     <details>
+..         <summary>Click to see renderings of IUI3-RedSea</summary>
+
+..         <video width="720" height="240" controls loop>
+..             <source src="../media/IUI3-RedSea.mp4" type="video/mp4">
+..             Your browser does not support the video tag.
+..         </video>
+..     </details>
 
 .. raw:: html
 

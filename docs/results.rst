@@ -11,20 +11,16 @@ Renderings
 
 This are some results that show the reconstructed scene on the left and the clean scene on the right.
 
-.. raw:: html
-
-    <iframe width="560" height="315" src="https://www.youtube.com/embed/N30qCrED-lU?si=nUDzYL6sLnMbJzTT" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
-
 .. .. raw:: html
 
-..     <details>
-..         <summary>Click to see renderings of IUI3-RedSea</summary>
+..     <iframe width="560" height="315" src="https://www.youtube.com/embed/N30qCrED-lU?si=nUDzYL6sLnMbJzTT" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
 
-..         <video width="720" height="240" controls loop>
-..             <source src="../media/IUI3-RedSea.mp4" type="video/mp4">
-..             Your browser does not support the video tag.
-..         </video>
-..     </details>
+.. raw:: html
+
+    <details>
+        <summary>Click to see renderings of IUI3-RedSea</summary>
+        <iframe width="560" height="315" src="https://www.youtube.com/embed/EjNc-o3LptY?si=wXmoviLHrwdfTHDc" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+    </details>
 
 .. raw:: html
 

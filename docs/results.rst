@@ -13,8 +13,7 @@ This are some results that show the reconstructed scene on the left and the clea
 
 .. raw:: html
 
-   <iframe width="560" height="315" src="https://www.youtube.com/watch?v=N30qCrED-lU" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
-
+    <iframe width="560" height="315" src="https://www.youtube.com/embed/N30qCrED-lU?si=nUDzYL6sLnMbJzTT" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
 
 .. .. raw:: html
 

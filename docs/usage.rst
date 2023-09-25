@@ -13,21 +13,11 @@ Additionally I will include an example of how to use the feature of adding synth
 Datasets
 ********
 
-Example datasets
-----------------
+Example dataset
+---------------
 
-I provide some example datasets in this repository. Those are the `machine hall dataset 01 <https://projects.asl.ethz.ch/datasets/doku.php?id=kmavvisualinertialdatasets>`_
-and the `SeaThru-NeRF dataset <https://sea-thru-nerf.github.io/>`_. To use those datasets,
-you need to download them first. This can be done via:
-
-.. code-block:: bash
-
-    python ./additional_scripts/download_data.py seathru_nerf_dataset
-    python ./additional_scripts/download_data.py MH_01
-
-The datasets will be downloaded to the folder ``data`` in the root directory of this repository.
-These datsets come with camera poses that were computed using colmap. Therefore, you do not
-need to preprocess them for NeRF training anymore.
+The Seathru-NeRF dataset was used for all examples and results in this documentation. It is a good starting point to experiment
+with and it can be downloaded `here <https://sea-thru-nerf.github.io/>`_.
 
 Using your own datasets
 -----------------------
@@ -65,7 +55,7 @@ can be downloaded following the instructions above, you can use the following co
 
 .. code-block:: bash
 
-    ns-train seathru-nerf --vis wandb --data data/seathru/IUI3-RedSea
+    ns-train seathru-nerf --vis wandb --data <path_to_Seathru_NeRF_dataset>/IUI3-RedSea
 
 
 On your wandb page you can then see. something that looks like the following:
@@ -101,8 +91,7 @@ Rendering
 After having trained the Subsea-NeRF, you can use it to render videos from arbitrary camera trajectories of the scene.
 Make sure to first locate the config.yml of the trained model as you need to pass the path to the rendering script.
 This file can be found in the output folder created when training the NeRF. Due to the underlying image formation model
-that allows us to seperate between the objects and the water within a scene (see Equation (5) in the
-`report <../../reports/pms122-final-report.pdf>`_), you need to
+that allows us to seperate between the objects and the water within a scene, you need to
 choose the kind of video you want to render. The following options exist:
 
 - **rgb**: To render the reconstructed scene.

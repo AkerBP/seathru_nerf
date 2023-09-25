@@ -11,17 +11,6 @@ Renderings
 
 This are some results that show the reconstructed scene on the left and the clean scene on the right.
 
-.. raw:: html
-
-    <iframe width="560" height="315" src="https://www.youtube.com/embed/EjNc-o3LptY?si=wXmoviLHrwdfTHDc" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
-
-.. raw:: html
-
-    <iframe width="560" height="315" src="https://www.youtube.com/embed/EjNc-o3LptY?si=wXmoviLHrwdfTHDc" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
-
-.. raw:: html
-
-    <iframe width="560" height="315" src="https://www.youtube.com/embed/EjNc-o3LptY?si=wXmoviLHrwdfTHDc" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
 
 .. raw:: html
 
@@ -30,27 +19,20 @@ This are some results that show the reconstructed scene on the left and the clea
         <iframe width="560" height="315" src="https://www.youtube.com/embed/EjNc-o3LptY?si=wXmoviLHrwdfTHDc" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
     </details>
 
-.. .. raw:: html
 
-..     <details>
-..         <summary>Click to see renderings of Curasao</summary>
+.. raw:: html
 
-..         <video width="720" height="240" controls loop>
-..             <source src="../media/Curasao.mp4" type="video/mp4">
-..             Your browser does not support the video tag.
-..         </video>
-..     </details>
+    <details>
+        <summary>Click to see renderings of Curasao</summary>
+        <iframe width="560" height="315" src="https://www.youtube.com/embed/PO6vF60tdDQ?si=C0c-VQ_r6nf53EBn" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+    </details>
 
-.. .. raw:: html
+.. raw:: html
 
-..     <details>
-..         <summary>Click to see renderings of JapaneseGradens-RedSea [sic]</summary>
-
-..         <video width="720" height="240" controls loop>
-..             <source src="../media/JapaneseGradens-RedSea.mp4" type="video/mp4">
-..             Your browser does not support the video tag.
-..         </video>
-..     </details>
+    <details>
+        <summary>Click to see renderings of JapaneseGardens-RedSea</summary>
+        <iframe width="560" height="315" src="https://www.youtube.com/embed/EMFzwOsSNKQ?si=SvmtJUpADdgQFSGR" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+    </details>
 
 .. raw:: html
 
@@ -61,49 +43,26 @@ show the depthmaps on the left and the object weight accumulation maps on the ri
 can nicely see, that the model is able to seperate between objects (red hue, indicating high accumulation) and the water (blue
 hue, indicating low accumulation).
 
-.. .. raw:: html
-
-..     <details>
-..         <summary>Click to see renderings of IUI3-RedSea</summary>
-
-..         <video width="720" height="240" controls loop>
-..             <source src="../media/IUI3-RedSea_maps.mp4" type="video/mp4">
-..             Your browser does not support the video tag.
-..         </video>
-..     </details>
-
-.. .. raw:: html
-
-..     <details>
-..         <summary>Click to see renderings of Curasao</summary>
-
-..         <video width="720" height="240" controls loop>
-..             <source src="../media/Curasao_maps.mp4" type="video/mp4">
-..             Your browser does not support the video tag.
-..         </video>
-..     </details>
-
-.. .. raw:: html
-
-..     <details>
-..         <summary>Click to see renderings of JapaneseGradens-RedSea [sic]</summary>
-
-..         <video width="720" height="240" controls loop>
-..             <source src="../media/JapaneseGradens-RedSea_maps.mp4" type="video/mp4">
-..             Your browser does not support the video tag.
-..         </video>
-..     </details>
 .. raw:: html
 
-    <iframe width="560" height="315" src="https://www.youtube.com/embed/EjNc-o3LptY?si=wXmoviLHrwdfTHDc" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+    <details>
+        <summary>Click to see renderings of IUI3-RedSea</summary>
+        <iframe width="560" height="315" src="https://www.youtube.com/embed/UKqaSy9rJnA?si=3v9WdqxpmvvpEBPO" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+    </details>
 
 .. raw:: html
 
-    <iframe width="560" height="315" src="https://www.youtube.com/embed/EjNc-o3LptY?si=wXmoviLHrwdfTHDc" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+    <details>
+        <summary>Click to see renderings of Curasao</summary>
+        <iframe width="560" height="315" src="https://www.youtube.com/embed/qEBe0dL4kMc?si=3cnfkPgyKBBgF13Y" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+    </details>
 
 .. raw:: html
 
-    <iframe width="560" height="315" src="https://www.youtube.com/embed/EjNc-o3LptY?si=wXmoviLHrwdfTHDc" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+    <details>
+        <summary>Click to see renderings of JapaneseGradens-RedSea [sic]</summary>
+        <iframe width="560" height="315" src="https://www.youtube.com/embed/YW33VPZYGg0?si=xKS55gbN4W8rByQ0" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+    </details>
 
 .. raw:: html
 

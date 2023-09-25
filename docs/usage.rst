@@ -126,39 +126,3 @@ the dataset, a command looks similar to the following:
     ns-render interpolate --load-config <path_to_config.yml> --rendered-output-names rgb --output-path <desired_path_for_output>
 
 Some results of example renderings are provided in the :ref:`results-label` section.
-
-Synthetic Water Effects
-***********************
-
-Another core functionality of this repository is the ability to add synthetic water effects to a scene. For this, you first
-have to train any NeRF model of your choice on a scene. I recommend to use a `nerfacto <https://docs.nerf.studio/en/latest/nerfology/methods/nerfacto.html>`_ 
-model as they incorporate the latest advances in the field and are well suited for real world scenes.
-
-The command to train a the nerfacto-huge model on the MH_01 dataset would look something like this:
-
-.. code-block:: bash
-
-    ns-train nerfacto-huge --vis wandb --data data/MH_01
-
-Then, extract numerical depthmaps with the custom renderer that was implemented to the `nerfstudio fork <https://github.com/acse-pms122/nerfstudio_dev/tree/main>`_.
-You can run it as follows:
-
-.. code-block:: bash
-
-    ns-render depthmaps --load-config <path_to_config.yml> --output-path <desired_path_for_output>
-
-You can then use the extracted depthmaps together with the implemented script to add synthetic water effects to the images.
-
-To see what arguments need to be specified, you can use the help command:
-
-.. code-block:: bash
-
-    python ./additional_scripts/add_water.py --help
-
-To add synthetic water effects to the images, with the default coefficients, you can run the following command:
-
-.. code-block:: bash
-
-    python .additional_scripts/add_water.py --image_directory <path_to_clean_images> --depth_directory <path_to_depthmaps> --target_directory <path_to_desired_output_directory>
-
-With this, you should get outputs similar to the ones presented in the :ref:`results-label` section.

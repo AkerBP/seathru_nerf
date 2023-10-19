@@ -1,11 +1,11 @@
-# Seathru-NeRF for nerfstudio
+# SeaThru-NeRF for nerfstudio
 <p align="center">
 <img src="https://github.com/psetinek/seathru_nerf/actions/workflows/linting.yml/badge.svg" alt="linting"/>
 <img src="https://github.com/psetinek/seathru_nerf/actions/workflows/tests.yml/badge.svg" alt="tests"/>
 <img src="https://img.shields.io/badge/license-MIT-blue.svg" alt="license"/>
 </p>
 
-This repository provides Neural Radiance Field (NeRF) approach specifically tailored to underwater scenes. Below you can see results of a conventional NeRF approach (nerfacto) compared to this implementation on a subsea scene:
+This repository provides a Neural Radiance Field (NeRF) approach specifically tailored to subsea scenes. Below you can see results of a conventional NeRF approach (nerfacto) compared to this implementation on a subsea scene:
 
 <p align="center">
 <img src="./imgs/comp.gif"/>
@@ -13,7 +13,7 @@ This repository provides Neural Radiance Field (NeRF) approach specifically tail
 
 (The renders above are heavily compressed and show a lot of quality loss!)
 
-This repository is an unofficial implementation of [Seathru-Nerf](https://sea-thru-nerf.github.io). It adapts and extends the approach introduced in the original [publication](https://arxiv.org/abs/2304.07743). The exact modifications and extensions are described [here.](#differences-to-official-implementation)
+This repository is an unofficial extension of [Seathru-Nerf](https://sea-thru-nerf.github.io). It adapts and extends the approach introduced in the original [publication](https://arxiv.org/abs/2304.07743). The exact modifications and extensions are described [here.](#differences-to-official-implementation)
 
 This implementation is built on top of [nerfstudio](https://docs.nerf.studio/en/latest/) and therefore allows for easy modification and experimentation.
 
@@ -26,6 +26,7 @@ A detailed description of the approach and general usage of this repository is p
 * [Requirements](#requirements)
 * [Installation](#installation)
 * [Usage Example](#usage-example)
+* [Contributers](#contributers)
 * [License](#license)
 <!-- TOC -->
 
@@ -114,6 +115,8 @@ The rendered video should look something like this (left gif is rgb and right gi
 
 Please note that those gifs are compressed and do not do the approach justice. Please render your own videos to see the level of detail and clarity of the renders.
 
+## Contributers and Credits
+This repository was developed as part of an Independent Research Project, a collaboration between [Imperial College London](https://www.imperial.ac.uk/) and [Aker BP](https://akerbp.com/en/). If you have any questions or possible extensions, please raise an issue or [contact me](mailto:paul.setinek@gmail.com). 
 
 ## **License**
 

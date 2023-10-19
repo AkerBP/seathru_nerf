@@ -1,6 +1,3 @@
-# Name: Paul Setinek
-# Github: acse-pms122
-
 from typing import Literal, Union, Tuple
 
 import torch

@@ -1,6 +1,3 @@
-# Name: Paul Setinek
-# Github: acse-pms122
-
 from enum import Enum
 
 

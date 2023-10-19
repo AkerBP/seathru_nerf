@@ -1,6 +1,3 @@
-# Name: Paul Setinek
-# Github: acse-pms122
-
 import pytest
 import torch
 import math

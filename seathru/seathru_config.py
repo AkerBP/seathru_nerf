@@ -1,6 +1,3 @@
-# Name: Paul Setinek
-# Github: acse-pms122
-
 from nerfstudio.engine.trainer import TrainerConfig
 from nerfstudio.plugins.types import MethodSpecification
 from nerfstudio.pipelines.base_pipeline import VanillaPipelineConfig

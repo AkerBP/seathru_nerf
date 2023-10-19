@@ -1,6 +1,3 @@
-# Name: Paul Setinek
-# Github: acse-pms122
-
 from dataclasses import dataclass, field
 from typing import Dict, List, Type, Literal, Tuple
 

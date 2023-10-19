@@ -11,7 +11,7 @@ This repository provides a Neural Radiance Field (NeRF) approach specifically ta
 <img src="./imgs/comp.gif"/>
 </p>
 
-(The renders above are heavily compressed and show a lot of quality loss!)
+(The renders above are heavily compressed and show a lot of quality loss! The dataset of the shown scenes is not mine and available [here](https://sea-thru-nerf.github.io/).)
 
 This repository is an unofficial extension of [Seathru-Nerf](https://sea-thru-nerf.github.io). It adapts and extends the approach introduced in the original [publication](https://arxiv.org/abs/2304.07743). The exact modifications and extensions are described [here.](#differences-to-official-implementation)
 
@@ -26,7 +26,7 @@ A detailed description of the approach and general usage of this repository is p
 * [Requirements](#requirements)
 * [Installation](#installation)
 * [Usage Example](#usage-example)
-* [Contributers](#contributers)
+* [Contributers and Credits](#contributers-and-credits)
 * [License](#license)
 <!-- TOC -->
 

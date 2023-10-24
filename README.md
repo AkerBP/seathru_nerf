@@ -6,7 +6,6 @@
 </p>
 
 **Contributors**
-#### Contributors
 - Paul Setinek *(Main Author)*
 - Lukas Mosser *(Supervisor, Aker BP)*
 - Lluis Guasch *(Supervisor, Imperial COllege London)*

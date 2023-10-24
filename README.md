@@ -5,14 +5,14 @@
 <img src="https://img.shields.io/badge/license-MIT-blue.svg" alt="license"/>
 </p>
 
-### Contributors
+#### Contributors
 - Paul Setinek *(Main Author)*
 - Lukas Mosser *(Supervisor, Aker BP)*
 - Lluis Guasch *(Supervisor, Imperial COllege London)*
 - Edmary Altamiranda Maldonado *(Aker BP)*
 - Jarle Marius Solland *(Aker BP)*
 
-### Affiliations
+#### Affiliations
 This work was performed as part of a Master's Thesis at [Imperial College London](https://www.imperial.ac.uk/) in collaboration with [Aker BP ASA](https://www.akerbp.com/).
 
 ### Project description

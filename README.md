@@ -13,7 +13,7 @@
 - Edmary Altamiranda Maldonado *(Aker BP)*
 - Jarle Marius Solland *(Aker BP)*
 
-#### Affiliations
+% #### Affiliations
 This work was performed as part of a Master's Thesis at [Imperial College London](https://www.imperial.ac.uk/) in collaboration with [Aker BP ASA](https://www.akerbp.com/).
 
 #### Project description

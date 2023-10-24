@@ -5,6 +5,17 @@
 <img src="https://img.shields.io/badge/license-MIT-blue.svg" alt="license"/>
 </p>
 
+### Contributors
+- Paul Setinek *(Main Author)*
+- Lukas Mosser *(Supervisor, Aker BP)*
+- Lluis Guasch *(Supervisor, Imperial COllege London)*
+- Edmary Altamiranda Maldonado *(Aker BP)*
+- Jarle Marius Solland *(Aker BP)*
+
+### Affiliations
+This work was performed as part of a Master's Thesis at [Imperial College London](https://www.imperial.ac.uk/) in collaboration with [Aker BP ASA](https://www.akerbp.com/).
+
+### Project description
 This repository provides a Neural Radiance Field (NeRF) approach specifically tailored to subsea scenes. Below you can see results of a conventional NeRF approach (nerfacto) compared to this implementation on a subsea scene:
 
 <p align="center">

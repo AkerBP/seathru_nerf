@@ -5,7 +5,7 @@
 <img src="https://img.shields.io/badge/license-MIT-blue.svg" alt="license"/>
 </p>
 
-#### Contributors
+**Contributors**
 - Paul Setinek *(Main Author)*
 - Lukas Mosser *(Supervisor, Aker BP)*
 - Lluis Guasch *(Supervisor, Imperial COllege London)*

@@ -9,7 +9,7 @@
 
 - Paul Setinek *(Main Author)*
 - Lukas Mosser *(Supervisor, Aker BP)*
-- Lluis Guasch *(Supervisor, Imperial COllege London)*
+- Lluis Guasch *(Supervisor, Imperial College London)*
 - Edmary Altamiranda Maldonado *(Aker BP)*
 - Jarle Marius Solland *(Aker BP)*
 

@@ -7,11 +7,11 @@
 
 **Contributors**
 
-- Paul Setinek *(Main Author)*
-- Lukas Mosser *(Supervisor, Aker BP)*
-- Lluis Guasch *(Supervisor, Imperial College London)*
-- Edmary Altamiranda Maldonado *(Aker BP)*
-- Jarle Marius Solland *(Aker BP)*
+- [Paul Setinek](https://www.linkedin.com/in/paul-setinek/) *(Main Author)*
+- [Lukas Mosser](https://www.linkedin.com/in/lukas-mosser/) *(Supervisor, Aker BP)*
+- [Lluis Guasch](https://www.imperial.ac.uk/people/l.guasch08) *(Supervisor, Imperial College London)*
+- [Edmary Altamiranda Maldonado](https://www.linkedin.com/in/edmary-altamiranda-a53b629/) *(Aker BP)*
+- [Jarle Marius Solland](https://www.linkedin.com/in/jarle-marius-solland-64244474/) *(Aker BP)*
 
 **Affiliations**
 

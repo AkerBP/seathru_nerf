@@ -31,7 +31,7 @@ This repository is an unofficial extension of [Seathru-Nerf](https://sea-thru-ne
 
 This implementation is built on top of [nerfstudio](https://docs.nerf.studio/en/latest/) and therefore allows for easy modification and experimentation.
 
-A detailed description of the approach and general usage of this repository is provided in the documentation available [here](https://psetinek.github.io/seathru_nerf/). (For best functionality, please open the docs in Google Chrome) To use this repository, please refer to the [Requirements](#requirements) and [Installation](#installation) section and look at the simple usage example provided [here](#usage-example).
+A detailed description of the approach and general usage of this repository is provided in the documentation available [here](https://akerbp-dataops.github.io/seathru_nerf/). (For best functionality, please open the docs in Google Chrome) To use this repository, please refer to the [Requirements](#requirements) and [Installation](#installation) section and look at the simple usage example provided [here](#usage-example).
 
 ## **Table of Contents**
 

@@ -5,7 +5,7 @@ version = "0.0.1"
 
 
 dependencies = [
-    "nerfstudio==0.3.4",
+    "nerfstudio>=0.3.4",
     "pytest",
     "pyright",
     "ruff",

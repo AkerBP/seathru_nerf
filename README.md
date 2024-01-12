@@ -31,7 +31,7 @@ This repository is an unofficial extension of [Seathru-Nerf](https://sea-thru-ne
 
 This implementation is built on top of [nerfstudio](https://docs.nerf.studio/en/latest/) and therefore allows for easy modification and experimentation.
 
-A detailed description of the approach and general usage of this repository is provided in the documentation available [here](https://akerbp-dataops.github.io/seathru_nerf/). (For best functionality, please open the docs in Google Chrome) To use this repository, please refer to the [Requirements](#requirements) and [Installation](#installation) section and look at the simple usage example provided [here](#usage-example).
+A detailed description of the approach and general usage of this repository is provided in the documentation available [here](https://akerbp.github.io/seathru_nerf/). (For best functionality, please open the docs in Google Chrome) To use this repository, please refer to the [Requirements](#requirements) and [Installation](#installation) section and look at the simple usage example provided [here](#usage-example).
 
 ## **Table of Contents**
 
@@ -91,7 +91,7 @@ If you see the help message with all the training options, you are good to go an
 
 ## Usage Example
 
-This section goes through a basic usage example of this repository. For a general in depth documentation, please look [here](./docs/html/index.html).
+This section goes through a basic usage example of this repository. For a general in depth documentation, please look [here](https://akerbp.github.io/seathru_nerf/).
 
 ### Training your first subsea NeRF
 To train your first subsea NeRF, please download the dataset available [here](https://sea-thru-nerf.github.io/). After unpacking, you can train the subsea NeRF with the following command:

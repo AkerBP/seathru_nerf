@@ -100,6 +100,8 @@ To train your first subsea NeRF, please download the dataset available [here](ht
 ns-train seathru-nerf-lite --vis viewer+wandb colmap --data <path_to_dataset> --images-path images_wb
 ```
 
+(If you get an error with the colmap path, create a directory `colmap` in the dataset folder and move the `sparse` folder into it.)
+
 You can then track the training process on [wandb](https://wandb.ai/site) or watch it live via the [nerfstudio viewer](https://docs.nerf.studio/en/latest/quickstart/viewer_quickstart.html).
 
 When training is completed (takes around 1hr for the SeaThru-NeRF dataset scenes with a RTX3060 Laptop GPU), the trained model will be saved to an `./outputs/` folder.

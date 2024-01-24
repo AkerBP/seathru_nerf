@@ -2,3 +2,4 @@ data/*
 outputs/*
 seathru_nerf.egg-info/*
 .vscode/*
+**/__pycache__/*

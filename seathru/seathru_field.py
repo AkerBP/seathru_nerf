@@ -186,7 +186,7 @@ class SeathruField(Field):
         density = density * selector[..., None]
         return density, bottleneck_vector
 
-    def get_outputs(   # type: ignore
+    def get_outputs(  # type: ignore
         self, ray_samples: RaySamples, density_embedding: Optional[Tensor] = None
     ) -> Dict[SeathruHeadNames, Tensor]:
         """Compute outputs of object and medium networks (except object density).

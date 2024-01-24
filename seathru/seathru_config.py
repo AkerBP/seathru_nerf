@@ -43,8 +43,8 @@ seathru_method = MethodSpecification(
                 "mode": "off",
                 "optimizer": AdamOptimizerConfig(lr=6e-4, eps=1e-8, weight_decay=1e-2),
                 "scheduler": ExponentialDecaySchedulerConfig(
-                        lr_final=6e-6, max_steps=500000
-                    ),
+                    lr_final=6e-6, max_steps=500000
+                ),
             },
         },
         viewer=ViewerConfig(num_rays_per_chunk=1 << 15),
@@ -112,8 +112,8 @@ seathru_method_lite = MethodSpecification(
                 "mode": "off",
                 "optimizer": AdamOptimizerConfig(lr=6e-4, eps=1e-8, weight_decay=1e-2),
                 "scheduler": ExponentialDecaySchedulerConfig(
-                        lr_final=6e-6, max_steps=500000
-                    ),
+                    lr_final=6e-6, max_steps=500000
+                ),
             },
         },
         viewer=ViewerConfig(num_rays_per_chunk=1 << 15),

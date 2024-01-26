@@ -3,7 +3,6 @@ from nerfstudio.plugins.types import MethodSpecification
 from nerfstudio.pipelines.base_pipeline import VanillaPipelineConfig
 from nerfstudio.data.datamanagers.base_datamanager import VanillaDataManagerConfig
 from nerfstudio.data.dataparsers.nerfstudio_dataparser import NerfstudioDataParserConfig
-from nerfstudio.cameras.camera_optimizers import CameraOptimizerConfig
 from nerfstudio.engine.schedulers import ExponentialDecaySchedulerConfig
 from nerfstudio.engine.optimizers import AdamOptimizerConfig
 from nerfstudio.configs.base_config import ViewerConfig
@@ -24,13 +23,6 @@ seathru_method = MethodSpecification(
                 dataparser=NerfstudioDataParserConfig(),
                 train_num_rays_per_batch=16384,
                 eval_num_rays_per_batch=4096,
-                camera_optimizer=CameraOptimizerConfig(
-                    mode="off",
-                    optimizer=AdamOptimizerConfig(lr=6e-4, eps=1e-8, weight_decay=1e-2),
-                    scheduler=ExponentialDecaySchedulerConfig(
-                        lr_final=6e-6, max_steps=500000
-                    ),
-                ),
             ),
             model=SeathruModelConfig(eval_num_rays_per_chunk=1 << 15),
         ),
@@ -45,6 +37,13 @@ seathru_method = MethodSpecification(
                 "optimizer": AdamOptimizerConfig(lr=2e-3, eps=1e-8, max_norm=0.001),
                 "scheduler": ExponentialDecaySchedulerConfig(
                     lr_final=1e-5, max_steps=500000, warmup_steps=1024
+                ),
+            },
+            "camera_opt": {
+                "mode": "off",
+                "optimizer": AdamOptimizerConfig(lr=6e-4, eps=1e-8, weight_decay=1e-2),
+                "scheduler": ExponentialDecaySchedulerConfig(
+                    lr_final=6e-6, max_steps=500000
                 ),
             },
         },
@@ -67,13 +66,6 @@ seathru_method_lite = MethodSpecification(
                 dataparser=NerfstudioDataParserConfig(),
                 train_num_rays_per_batch=8192,
                 eval_num_rays_per_batch=4096,
-                camera_optimizer=CameraOptimizerConfig(
-                    mode="off",
-                    optimizer=AdamOptimizerConfig(lr=6e-4, eps=1e-8, weight_decay=1e-2),
-                    scheduler=ExponentialDecaySchedulerConfig(
-                        lr_final=6e-6, max_steps=500000
-                    ),
-                ),
             ),
             model=SeathruModelConfig(
                 eval_num_rays_per_chunk=1 << 15,
@@ -114,6 +106,13 @@ seathru_method_lite = MethodSpecification(
                 "optimizer": AdamOptimizerConfig(lr=2e-3, eps=1e-8, max_norm=0.001),
                 "scheduler": ExponentialDecaySchedulerConfig(
                     lr_final=1e-5, max_steps=500000, warmup_steps=1024
+                ),
+            },
+            "camera_opt": {
+                "mode": "off",
+                "optimizer": AdamOptimizerConfig(lr=6e-4, eps=1e-8, weight_decay=1e-2),
+                "scheduler": ExponentialDecaySchedulerConfig(
+                    lr_final=6e-6, max_steps=500000
                 ),
             },
         },

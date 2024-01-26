@@ -154,7 +154,7 @@ class SeathruModel(Model):
         config: SeaThru-NeRF configuration to instantiate the model with.
     """
 
-    config: SeathruModelConfig
+    config: SeathruModelConfig  # type: ignore
 
     def populate_modules(self):
         """Setup the fields and modules."""
@@ -349,7 +349,7 @@ class SeathruModel(Model):
 
         return callbacks
 
-    def get_outputs(self, ray_bundle: RayBundle) -> Dict[str, torch.Tensor]:
+    def get_outputs(self, ray_bundle: RayBundle) -> Dict[str, torch.Tensor]:  # type: ignore
         """Get outputs from the model.
 
         Args:

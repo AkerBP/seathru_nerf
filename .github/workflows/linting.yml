@@ -33,7 +33,7 @@ jobs:
     # stuff
     - name: run ruff
       working-directory: ./seathru_nerf
-      run: ruff seathru/ tests/
+      run: ruff check seathru/ tests/
 
     - name: run black
       working-directory: ./seathru_nerf

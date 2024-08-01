@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="./">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Introduction &mdash; Subsea-NeRF  documentation</title>
+      <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=80d5e7a1" />
+      <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=19f00094" />
+
+  
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="_static/jquery.js?v=5d32c60e"></script>
+        <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script src="_static/documentation_options.js?v=5929fcd5"></script>
+        <script src="_static/doctools.js?v=9a2dae69"></script>
+        <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+        <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Installation" href="installation.html" />
+    <link rel="prev" title="Welcome to the Subsea-NeRF documentation!" href="index.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="index.html" class="icon icon-home">
+            Subsea-NeRF
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Introduction</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#approach">Approach</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#image-formation-model">Image formation model</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#rendering-equations">Rendering equations</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#network-architecture">Network architecture</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="installation.html">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="usage.html">Usage</a></li>
+<li class="toctree-l1"><a class="reference internal" href="results.html">Results</a></li>
+<li class="toctree-l1"><a class="reference internal" href="api.html">API</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">Subsea-NeRF</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">Introduction</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/intro.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="introduction">
+<span id="intro-label"></span><h1>Introduction<a class="headerlink" href="#introduction" title="Link to this heading"></a></h1>
+<p>With Neural Radiance Fields (NeRFs), we can store a 3D scene as a continuous function.
+This idea was first introduced in the original NeRF publication <span id="id1">[<a class="reference internal" href="#id12" title="Ben Mildenhall, Pratul P. Srinivasan, Matthew Tancik, Jonathan T. Barron, Ravi Ramamoorthi, and Ren Ng. Nerf: representing scenes as neural radiance fields for view synthesis. In ECCV. 2020.">5</a>]</span>.
+Since then, the field experienced many advancements. Some of them even in the subsea domain.
+However, these advancements still have some limitations. This implementation adresses some of those limitations
+and provides a modular and documented implementation of a subsea specific NeRF that allows for easy modifications and experiments.</p>
+<section id="approach">
+<h2>Approach<a class="headerlink" href="#approach" title="Link to this heading"></a></h2>
+<p>The fundamental principle underlying NeRFs is to represent a scene as a continuous function that maps a position,
+<span class="math notranslate nohighlight">\(\mathbf{x} \in \mathbb{R}^{3}\)</span>, and a viewing direction, <span class="math notranslate nohighlight">\(\boldsymbol{\theta} \in \mathbb{R}^{2}\)</span>,
+to a color <span class="math notranslate nohighlight">\(\mathbf{c} \in \mathbb{R}^{3}\)</span> and volume density <span class="math notranslate nohighlight">\(\sigma\)</span>. We can approximate this
+continuous scene representation with a simple Multi Layer Perceptron (MLP).
+<span class="math notranslate nohighlight">\(F_{\mathrm{\Theta}} : (\mathbf{x}, \boldsymbol{\theta}) \to (\mathbf{c},\sigma)\)</span>.</p>
+<p>It is common to also use positional and directional encodings to improve the performance of NeRF approaches. Furthermore,
+there are various approaches in order to sample points in regions of a scene that are relevant to the final image. A detailed
+explanation of the exact implemented architecture is given in the <a class="reference internal" href="#architecture-label"><span class="std std-ref">Network architecture</span></a> section.</p>
+<section id="image-formation-model">
+<h3>Image formation model<a class="headerlink" href="#image-formation-model" title="Link to this heading"></a></h3>
+<p>The authors of <span id="id2">[<a class="reference internal" href="#id11" title="Deborah Levy, Amit Peleg, Naama Pearl, Dan Rosenbaum, Derya Akkaynak, Simon Korman, and Tali Treibitz. Seathru-nerf: neural radiance fields in scattering media. 2023. arXiv:2304.07743.">3</a>]</span> combine the fundamentals of NeRFs with the following underwater image formation model
+proposed in <span id="id3">[<a class="reference internal" href="#id16" title="Derya Akkaynak and Tali Treibitz. A revised underwater image formation model. In Proceedings of the IEEE Conference on Computer Vision and Pattern Recognition (CVPR). 6 2018.">1</a>]</span>:</p>
+<div class="math notranslate nohighlight">
+\[I = \overbrace{\underbrace{J}_{\text{colour}} \cdot \underbrace{(e^{-\beta^D(\mathbf{v}_D)\cdot z})}_{\text{attenuation}}}^{\text{direct}} + \overbrace{\underbrace{B^\infty}_{\text{colour}} \cdot \underbrace{(1 - e^{-\beta^B(\mathbf{v}_B)\cdot z})}_{\text{attenuation}}}^{\text{backscatter}}\]</div>
+<p><span class="math notranslate nohighlight">\(I\)</span> …………… Image</p>
+<p><span class="math notranslate nohighlight">\(J\)</span> …………… Clear image (without any water effects like attenuation or backscatter)</p>
+<p><span class="math notranslate nohighlight">\(B^\infty\)</span> ……….. Backscatter water colour at depth infinity</p>
+<p><span class="math notranslate nohighlight">\(\beta^D(\mathbf{v}_D)\)</span> … Attenuation coefficient <a class="footnote-reference brackets" href="#f1" id="id4" role="doc-noteref"><span class="fn-bracket">[</span>1<span class="fn-bracket">]</span></a></p>
+<p><span class="math notranslate nohighlight">\(\beta^B(\mathbf{v}_B)\)</span> … Backscatter coefficient <a class="footnote-reference brackets" href="#f1" id="id5" role="doc-noteref"><span class="fn-bracket">[</span>1<span class="fn-bracket">]</span></a></p>
+<p><span class="math notranslate nohighlight">\(z\)</span> …………… Camera range</p>
+<p>This image formation model allows the model to seperate between the clean scene and the water effects. This is very useful
+since it allows for filtering out of water effects from a scene. Some results where this was achieved are shown in the
+<a class="reference internal" href="results.html#results-label"><span class="std std-ref">Results</span></a> section.</p>
+</section>
+<section id="rendering-equations">
+<h3>Rendering equations<a class="headerlink" href="#rendering-equations" title="Link to this heading"></a></h3>
+<p>As NeRFs require a discrete and differentiable volumetric rendering equation, the authors of <span id="id6">[<a class="reference internal" href="#id11" title="Deborah Levy, Amit Peleg, Naama Pearl, Dan Rosenbaum, Derya Akkaynak, Simon Korman, and Tali Treibitz. Seathru-nerf: neural radiance fields in scattering media. 2023. arXiv:2304.07743.">3</a>]</span> propose
+the following formulation:</p>
+<div class="math notranslate nohighlight">
+\[\hat{\boldsymbol{C}}(\mathbf{r}) = \sum_{i=1}^N \hat{\boldsymbol{C}}^{\text{obj}}_i(\mathbf{r}) + \sum_{i=1}^N \hat{\boldsymbol{C}}^{\text{med}}_i(\mathbf{r})\]</div>
+<p>This equation features an object and a medium part contributing towards the final rendered pixel
+colour <span class="math notranslate nohighlight">\(\hat{\boldsymbol{C}}(\mathbf{r})\)</span>. Those two components are given by:</p>
+<div class="math notranslate nohighlight">
+\[\hat{\boldsymbol{C}}^{\text{obj}}_i(\mathbf{r}) = T^{\text{obj}}_i \cdot \exp (-\boldsymbol{\sigma}^{\text{attn}} t_i) \cdot \left(1 - \exp({-\sigma^{\text{obj}}_i \delta_i})\right) \cdot \mathbf{c}^{\text{obj}}_i\]</div>
+<div class="math notranslate nohighlight">
+\[\hat{\boldsymbol{C}}^{\text{med}}_i(\mathbf{r}) = T^{\text{obj}}_i \cdot \exp (-\boldsymbol{\sigma}^{\text{bs}} t_i) \cdot \left(1 - \exp({-\boldsymbol{\sigma}^{\text{bs}} \delta_i})\right) \cdot \mathbf{c}^{\text{med}}\]</div>
+<p>, with</p>
+<div class="math notranslate nohighlight">
+\[T^{\text{obj}}_i = \exp\left(-\sum_{j=0}^{i-1}\sigma^{\text{obj}}_j\delta_j\right)\]</div>
+<p>The above equations contain five parameters that are used to describe the underlying scene:
+object density <span class="math notranslate nohighlight">\(\sigma^{\text{obj}}_i \in \mathbb{R}^{1}\)</span>, object colour
+<span class="math notranslate nohighlight">\(\mathbf{c}^{\text{obj}}_i \in \mathbb{R}^{3}\)</span>, backscatter density
+<span class="math notranslate nohighlight">\(\boldsymbol{\sigma}^{\text{bs}} \in \mathbb{R}^{3}\)</span>, attenuation density
+<span class="math notranslate nohighlight">\(\boldsymbol{\sigma}^{\text{attn}} \in \mathbb{R}^{3}\)</span>, and medium colour
+<span class="math notranslate nohighlight">\(\mathbf{c}^{\text{med}} \in \mathbb{R}^{3}\)</span>.</p>
+<p>I use the network discussed below to compute those five parameters that parametrize the underlying scene.</p>
+</section>
+<section id="network-architecture">
+<span id="architecture-label"></span><h3>Network architecture<a class="headerlink" href="#network-architecture" title="Link to this heading"></a></h3>
+<p>The network implemented for this approach has the following architecture:</p>
+<img alt="Network architecture" class="align-center" src="_images/my_architecture.png" />
+<br><p>The object network computes <span class="math notranslate nohighlight">\(\sigma^{\text{obj}}_i\)</span> and <span class="math notranslate nohighlight">\(\mathbf{c}^{\text{obj}}_i\)</span>, while the
+medium network computes <span class="math notranslate nohighlight">\(\boldsymbol{\sigma}^{\text{bs}}\)</span>, <span class="math notranslate nohighlight">\(\boldsymbol{\sigma}^{\text{attn}}\)</span> and
+<span class="math notranslate nohighlight">\(\mathbf{c}^{\text{med}}\)</span>.</p>
+<p>The proposal network is used to sample point in regions of the scene that contribute most to the final image. This approach
+actually uses two proposal networks that are connected sequentially. More details on the concept of proposal samplers and
+how they are optimized during training can be found in <span id="id7">[<a class="reference internal" href="#id13" title="Jonathan T. Barron, Ben Mildenhall, Dor Verbin, Pratul P. Srinivasan, and Peter Hedman. Mip-nerf 360: unbounded anti-aliased neural radiance fields. CVPR, 2022.">2</a>]</span>.</p>
+<p>For positional encoding, I use Hash Grid Encodings as proposed in <span id="id8">[<a class="reference internal" href="#id14" title="Thomas Müller, Alex Evans, Christoph Schied, and Alexander Keller. Instant neural graphics primitives with a multiresolution hash encoding. ACM Trans. Graph., 41(4):102:1–102:15, July 2022. doi:10.1145/3528223.3530127.">4</a>]</span> and for directional
+encoding I use Spherical Harmonics Encoding (SHE) introduced in <span id="id9">[<a class="reference internal" href="#id15" title="Dor Verbin, Peter Hedman, Ben Mildenhall, Todd Zickler, Jonathan T. Barron, and Pratul P. Srinivasan. Ref-NeRF: structured view-dependent appearance for neural radiance fields. CVPR, 2022.">6</a>]</span>.</p>
+<p>The MLPs in the object and medium networks are implemented using <a class="reference external" href="https://github.com/NVlabs/tiny-cuda-nn">tinycuda-nn</a> for
+performance reasons.</p>
+<p class="rubric">Footnotes</p>
+<aside class="footnote-list brackets">
+<aside class="footnote brackets" id="f1" role="doc-footnote">
+<span class="label"><span class="fn-bracket">[</span>1<span class="fn-bracket">]</span></span>
+<span class="backrefs">(<a role="doc-backlink" href="#id4">1</a>,<a role="doc-backlink" href="#id5">2</a>)</span>
+<p>Those depend on range, object reflectance, spectrum of ambient light, the camera’s spectral response, and the physical scattering and beam attenuation coefficients of the water, all of which are wavelength-dependent.</p>
+</aside>
+</aside>
+<p class="rubric">References</p>
+<div class="docutils container" id="id10">
+<div role="list" class="citation-list">
+<div class="citation" id="id16" role="doc-biblioentry">
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id3">1</a><span class="fn-bracket">]</span></span>
+<p>Derya Akkaynak and Tali Treibitz. A revised underwater image formation model. In <em>Proceedings of the IEEE Conference on Computer Vision and Pattern Recognition (CVPR)</em>. 6 2018.</p>
+</div>
+<div class="citation" id="id13" role="doc-biblioentry">
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id7">2</a><span class="fn-bracket">]</span></span>
+<p>Jonathan T. Barron, Ben Mildenhall, Dor Verbin, Pratul P. Srinivasan, and Peter Hedman. Mip-nerf 360: unbounded anti-aliased neural radiance fields. <em>CVPR</em>, 2022.</p>
+</div>
+<div class="citation" id="id11" role="doc-biblioentry">
+<span class="label"><span class="fn-bracket">[</span>3<span class="fn-bracket">]</span></span>
+<span class="backrefs">(<a role="doc-backlink" href="#id2">1</a>,<a role="doc-backlink" href="#id6">2</a>)</span>
+<p>Deborah Levy, Amit Peleg, Naama Pearl, Dan Rosenbaum, Derya Akkaynak, Simon Korman, and Tali Treibitz. Seathru-nerf: neural radiance fields in scattering media. 2023. <a class="reference external" href="https://arxiv.org/abs/2304.07743">arXiv:2304.07743</a>.</p>
+</div>
+<div class="citation" id="id14" role="doc-biblioentry">
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id8">4</a><span class="fn-bracket">]</span></span>
+<p>Thomas Müller, Alex Evans, Christoph Schied, and Alexander Keller. Instant neural graphics primitives with a multiresolution hash encoding. <em>ACM Trans. Graph.</em>, 41(4):102:1–102:15, July 2022. <a class="reference external" href="https://doi.org/10.1145/3528223.3530127">doi:10.1145/3528223.3530127</a>.</p>
+</div>
+<div class="citation" id="id12" role="doc-biblioentry">
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id1">5</a><span class="fn-bracket">]</span></span>
+<p>Ben Mildenhall, Pratul P. Srinivasan, Matthew Tancik, Jonathan T. Barron, Ravi Ramamoorthi, and Ren Ng. Nerf: representing scenes as neural radiance fields for view synthesis. In <em>ECCV</em>. 2020.</p>
+</div>
+<div class="citation" id="id15" role="doc-biblioentry">
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id9">6</a><span class="fn-bracket">]</span></span>
+<p>Dor Verbin, Peter Hedman, Ben Mildenhall, Todd Zickler, Jonathan T. Barron, and Pratul P. Srinivasan. Ref-NeRF: structured view-dependent appearance for neural radiance fields. <em>CVPR</em>, 2022.</p>
+</div>
+</div>
+</div>
+</section>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="index.html" class="btn btn-neutral float-left" title="Welcome to the Subsea-NeRF documentation!" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="installation.html" class="btn btn-neutral float-right" title="Installation" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright .</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

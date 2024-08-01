@@ -23,7 +23,7 @@ Using your own datasets
 -----------------------
 
 If you want to use your own dataset, please
-refer to the guide `here <https://docs.nerf.studio/en/latest/quickstart/custom_dataset.html>`__.
+refer to the guide `here <https://docs.nerf.studio/quickstart/custom_dataset.html>`__.
 
 Training
 ********

@@ -498,10 +498,9 @@ class SeathruModel(Model):
                 raise ValueError(f"Unknown prior_on: {self.config.prior_on}")
 
             # Proposal loss
-            loss_dict[
-                "interlevel_loss"
-            ] = self.config.interlevel_loss_mult * interlevel_loss(
-                outputs["weights_list"], outputs["ray_samples_list"]
+            loss_dict["interlevel_loss"] = (
+                self.config.interlevel_loss_mult
+                * interlevel_loss(outputs["weights_list"], outputs["ray_samples_list"])
             )
         return loss_dict
 

@@ -29,7 +29,7 @@ This repository provides a Neural Radiance Field (NeRF) approach specifically ta
 
 This repository is an unofficial extension of [Seathru-Nerf](https://sea-thru-nerf.github.io). It adapts and extends the approach introduced in the original [publication](https://arxiv.org/abs/2304.07743). The exact modifications and extensions are described [here.](#differences-to-official-implementation)
 
-This implementation is built on top of [nerfstudio](https://docs.nerf.studio/en/latest/) and therefore allows for easy modification and experimentation.
+This implementation is built on top of [nerfstudio](https://docs.nerf.studio/index.html) and therefore allows for easy modification and experimentation.
 
 A detailed description of the approach and general usage of this repository is provided in the documentation available [here](https://akerbp.github.io/seathru_nerf/). (For best functionality, please open the docs in Google Chrome) To use this repository, please refer to the [Requirements](#requirements) and [Installation](#installation) section and look at the simple usage example provided [here](#usage-example).
 
